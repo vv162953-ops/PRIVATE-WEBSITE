@@ -1,117 +1,169 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Our Private Space ❤️</title>
+<title>Our Private Space ❤️</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      min-height: 100vh;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff758c, #ff7eb3);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3, #c471ed);
+  color: white;
+  overflow-x: hidden;
+}
 
-    .box {
-      width: 90%;
-      max-width: 420px;
-      padding: 35px 25px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 25px;
-      text-align: center;
-      backdrop-filter: blur(12px);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-    }
+.center {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
 
-    h1 {
-      margin-bottom: 15px;
-    }
+.card {
+  width: 100%;
+  max-width: 450px;
+  padding: 35px 25px;
+  text-align: center;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 30px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 15px 50px rgba(0,0,0,0.25);
+}
 
-    p {
-      margin-bottom: 20px;
-    }
+.heart {
+  font-size: 65px;
+  animation: beat 1.2s infinite;
+}
 
-    input {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      font-size: 16px;
-      text-align: center;
-    }
+@keyframes beat {
+  50% {
+    transform: scale(1.18);
+  }
+}
 
-    button {
-      width: 100%;
-      padding: 14px;
-      border: none;
-      border-radius: 12px;
-      background: white;
-      color: #ff4f81;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+h1 {
+  font-size: 32px;
+  margin: 15px 0;
+}
 
-    button:hover {
-      transform: scale(1.02);
-    }
+p {
+  line-height: 1.7;
+}
 
-    #secret {
-      display: none;
-    }
+input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 16px;
+  margin: 15px 0 10px;
+}
 
-    .heart {
-      font-size: 55px;
-      margin-bottom: 15px;
-      animation: beat 1s infinite;
-    }
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  background: white;
+  color: #e84a7c;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .message {
-      line-height: 1.7;
-      margin-top: 20px;
-    }
+button:hover {
+  transform: scale(1.02);
+}
 
-    @keyframes beat {
-      50% {
-        transform: scale(1.15);
-      }
-    }
+#error {
+  display: none;
+  color: white;
+}
 
-    #error {
-      color: #fff;
-      margin-top: 12px;
-      display: none;
-    }
-  </style>
+#login {
+  display: block;
+}
+
+#private {
+  display: none;
+}
+
+.section {
+  margin-top: 25px;
+  padding: 20px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.12);
+}
+
+.photo-box {
+  height: 180px;
+  border-radius: 18px;
+  background: rgba(255,255,255,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.music {
+  margin-top: 15px;
+}
+
+.lock {
+  margin-top: 25px;
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -30px;
+  animation: float 6s linear infinite;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <!-- PASSWORD SCREEN -->
-  <div class="box" id="login">
+<!-- PASSWORD PAGE -->
+
+<div class="center" id="login">
+
+  <div class="card">
+
     <div class="heart">❤️</div>
 
-    <h1>Private Space</h1>
+    <h1>Our Private Space</h1>
 
-    <p>Enter the secret password 🔐</p>
+    <p>
+      This little place is only for us. 🔐
+    </p>
 
     <input
       type="password"
       id="password"
-      placeholder="Enter password"
+      placeholder="Enter secret password"
     >
 
     <button onclick="unlock()">
@@ -121,65 +173,157 @@
     <p id="error">
       Wrong password 😅
     </p>
+
   </div>
 
+</div>
 
-  <!-- PRIVATE CONTENT -->
-  <div class="box" id="secret">
 
-    <div class="heart">❤️</div>
+<!-- PRIVATE WEBSITE -->
+
+<div class="center" id="private">
+
+  <div class="card">
+
+    <div class="heart">💖</div>
 
     <h1>Welcome to Our Space</h1>
 
-    <p class="message">
-      This little place is just for us. 💕
-      <br><br>
-      Our memories, our messages,
-      our special moments... ✨
-      <br><br>
-      Nobody else gets to enter. 🔐❤️
+    <p>
+      Some memories deserve their own little place. ❤️
     </p>
 
-    <br>
 
-    <button onclick="logout()">
-      Lock 🔒
+    <!-- MESSAGE -->
+
+    <div class="section">
+
+      <h2>💌 A Little Message</h2>
+
+      <p>
+        You are one of the most special parts of my life.
+        Every memory, every smile and every little moment
+        means something to me. ❤️
+      </p>
+
+    </div>
+
+
+    <!-- PHOTO -->
+
+    <div class="section">
+
+      <h2>📸 Our Memories</h2>
+
+      <div class="photo-box">
+        Your photo will go here ❤️
+      </div>
+
+      <p>
+        Our favourite moments ✨
+      </p>
+
+    </div>
+
+
+    <!-- MUSIC -->
+
+    <div class="section">
+
+      <h2>🎵 Our Song</h2>
+
+      <p>
+        A special song for a special memory ❤️
+      </p>
+
+      <div class="music">
+        <audio controls style="width:100%;">
+          <source src="song.mp3" type="audio/mpeg">
+        </audio>
+      </div>
+
+    </div>
+
+
+    <!-- LOCK -->
+
+    <button class="lock" onclick="lockWebsite()">
+      🔒 Lock Website
     </button>
 
   </div>
 
+</div>
 
-  <script>
-    function unlock() {
 
-      const password =
-        document.getElementById("password").value;
+<script>
 
-      // CHANGE YOUR PASSWORD HERE
-      const correctPassword = "23120706";
+function unlock() {
 
-      if (password === correctPassword) {
+  const password =
+    document.getElementById("password").value;
 
-        document.getElementById("login").style.display = "none";
-        document.getElementById("secret").style.display = "block";
+  /* CHANGE PASSWORD HERE */
 
-      } else {
+  const correctPassword = "1234";
 
-        document.getElementById("error").style.display = "block";
+  if (password === correctPassword) {
 
-      }
-    }
+    document.getElementById("login").style.display = "none";
 
-    function logout() {
+    document.getElementById("private").style.display = "flex";
 
-      document.getElementById("secret").style.display = "none";
-      document.getElementById("login").style.display = "block";
+  } else {
 
-      document.getElementById("password").value = "";
-      document.getElementById("error").style.display = "none";
+    document.getElementById("error").style.display = "block";
 
-    }
-  </script>
+  }
+}
+
+
+function lockWebsite() {
+
+  document.getElementById("private").style.display = "none";
+
+  document.getElementById("login").style.display = "flex";
+
+  document.getElementById("password").value = "";
+
+  document.getElementById("error").style.display = "none";
+
+}
+
+
+/* Floating hearts */
+
+function createHeart() {
+
+  const heart =
+    document.createElement("div");
+
+  heart.className = "floating-heart";
+
+  heart.innerHTML = "❤️";
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.fontSize =
+    (15 + Math.random() * 25) + "px";
+
+  heart.style.animationDuration =
+    (4 + Math.random() * 4) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 8000);
+}
+
+setInterval(createHeart, 800);
+
+</script>
 
 </body>
 </html>
